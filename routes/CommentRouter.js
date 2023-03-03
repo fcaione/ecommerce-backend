@@ -1,7 +1,7 @@
 const Router = require('express').Router()
 const controller = require("../controllers/CommentController")
 
-Router.get('/:listing_id', controller.findAllCommentsforListing)
-Router.post("/:listing_id/:user_id", controller.createComment)
+Router.post("/:listingId/:userId", controller.createComment)
+Router.delete("/:commentId", controller.deleteComment)
 
 module.exports = Router;

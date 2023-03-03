@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       })
       Listing.hasMany(models.Comment, {
         foreignKey: "listingId",
-        as: "comments"
+        as: "comments",
+        onDelete: "CASCADE"
       })
     }
   }
