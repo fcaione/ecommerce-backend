@@ -4,7 +4,8 @@
   "description": "*** ### ***Description*** This is an e-commerce app where users can create their own profiles to post their own products to sell locally or through delivery. This is also a social app where users can interact with each other through following each other's pages and commenting on listings.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,10 +15,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "falso": "^0.0.0",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.9.0",
     "sequelize": "^6.29.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
   }
 }
