@@ -20,6 +20,7 @@ module.exports = {
 					model: "listings",
 					key: "id",
 				},
+				onDelete: "CASCADE"
 			},
 			userId: {
 				type: Sequelize.INTEGER,
@@ -28,6 +29,7 @@ module.exports = {
 					model: "users",
 					key: "id",
 				},
+				onDelete: "CASCADE"
 			},
 			createdAt: {
 				allowNull: false,

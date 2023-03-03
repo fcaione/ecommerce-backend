@@ -12,11 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       User.hasMany(models.Listing, {
         foreignKey: "userId",
-        as: "listings"
+        as: "listings",
+        onDelete: "CASCADE"
       })
       User.hasMany(models.Comment, {
         foreignKey: "userId",
-        as: "comments"
+        as: "comments", 
+        onDelete: "CASCADE"
       })
     }
   }

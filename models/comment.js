@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Comment.belongsTo(models.User, {
         foreignKey: "userId",
-        as: "usersComments"
+        as: "usersComments",
       })
       Comment.belongsTo(models.Listing, {
         foreignKey: "listingId",
-        as: "listingsComments"
+        as: "listingsComments",
       })
     }
   }
@@ -31,7 +31,8 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         model: "listings",
         key: "id"
-      }
+      },
+      onDelete: "CASCADE"
     },
     userId: {
       type: DataTypes.INTEGER,
@@ -39,7 +40,8 @@ module.exports = (sequelize, DataTypes) => {
       references: {
         model: "users",
         key: "id"
-      }
+      },
+      onDelete: "CASCADE"
     }
   }, {
     sequelize,
