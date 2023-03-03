@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Comment.belongsTo(models.User, {
         foreignKey: "userId",
-        as: "comments"
+        as: "usersComments"
       })
       Comment.belongsTo(models.Listing, {
         foreignKey: "listingId",
-        as: "comments"
+        as: "listingsComments"
       })
     }
   }
