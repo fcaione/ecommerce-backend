@@ -1,39 +1,36 @@
 const { Comment } = require("../models")
 const stringify = require("../utils")
 
-const findAllCommentsforListing = async (req, res) => {
-	const { listingId } = req.params.listingId
-	try {
-		const comments = await Comment.findAll({
-			include: [{ model: Comment, as: "listingComments" }],
-			where: {
-				listingId,
-			},
-		})
-        stringify(comments)
-		res.status(401).send(comments)
-	} catch (error) {
-		res.send(error)
-	}
-}
-
 const createComment = async (req, res) => {
-	const { listing_id, user_id } = req.params
+	const { listingId, userId } = req.params
 	try {
 		const commentBody = {
-			listing_id,
-			user_id,
+			listingId,
+			userId,
 			...req.body,
 		}
 		const comment = await Comment.create(commentBody)
         stringify(comment)
-		res.status(401).send(comment)
+		res.status(200).send(comment)
+	} catch (error) {
+		res.status(401).send(error)
+	}
+}
+const deleteComment = async (req, res) => {
+	const { commentId } = req.params
+	try {
+		await Comment.destroy({
+            where: {
+                id: commentId
+            }
+        })
+		res.status(200).send(`comment ${commentId} oblitered`)
 	} catch (error) {
 		res.status(401).send(error)
 	}
 }
 
 module.exports = {
-	findAllCommentsforListing,
 	createComment,
+    deleteComment,
 }
