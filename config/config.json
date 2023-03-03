@@ -1,0 +1,17 @@
+{
+  "development": {
+    "database": "ecommerce_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "database": "ecommerce_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "database": "ecommerce_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
