@@ -1,10 +1,20 @@
 const Router = require('express').Router()
 const controller = require('../controllers/ListingController')
+const middleware = require('../middleware')
 
 Router.get('/', controller.findAllListings)
-Router.post("/:userId", controller.createListing)
+Router.post("/:userId", 
+middleware.stripToken,
+middleware.verifyToken,
+controller.createListing)
 Router.get('/:listingId', controller.findListingByPk)
-Router.put("/:listingId", controller.updateListing)
-Router.delete("/:listingId", controller.deleteListing)
+Router.put("/:listingId",
+middleware.stripToken,
+middleware.verifyToken, 
+controller.updateListing)
+Router.delete("/:listingId", 
+middleware.stripToken,
+middleware.verifyToken,
+controller.deleteListing)
 
 module.exports = Router;
