@@ -15,6 +15,7 @@ const createComment = async (req, res) => {
 		res.status(401).send(error)
 	}
 }
+
 const deleteComment = async (req, res) => {
 	const { commentId } = req.params
 	try {
