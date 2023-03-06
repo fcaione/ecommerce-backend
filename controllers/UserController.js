@@ -7,7 +7,6 @@ const findUserByPk = async (req, res) => {
         const userAndListings = await User.findByPk(req.params.user_id, {
             include: [{ model: Listing, as: 'listings' }]
           })
-          stringify(userAndListings)
           res.send(userAndListings)
     } catch (error) {
         throw error
