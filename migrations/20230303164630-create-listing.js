@@ -17,6 +17,10 @@ module.exports = {
 				type: Sequelize.REAL,
 				allowNull: false,
 			},
+			image: {
+				type: Sequelize.STRING,
+				allowNull: false
+			},
 			soldOut: {
 				type: Sequelize.BOOLEAN,
 				allowNull: false,
