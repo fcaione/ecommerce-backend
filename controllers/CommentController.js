@@ -10,7 +10,6 @@ const createComment = async (req, res) => {
 			...req.body,
 		}
 		const comment = await Comment.create(commentBody)
-        stringify(comment)
 		res.status(200).send(comment)
 	} catch (error) {
 		res.status(401).send(error)

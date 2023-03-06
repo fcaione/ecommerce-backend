@@ -4,14 +4,11 @@ const stringify = require("../utils")
 const findAllListings = async (req, res) => {
     try {
         const listing = await Listing.findAll()
-        stringify(listing)
 		res.status(200).send(listing)
     } catch (error) {
 		res.status(401).send(error)
     }
 }
-
-//find listings only of followers?
 
 const findListingByPk = async (req, res) => {
 	const { listingId } = req.params
@@ -19,11 +16,24 @@ const findListingByPk = async (req, res) => {
 		const listing = await Listing.findByPk(listingId, {
 			include: [{ model: Comment, as: "comments" }],
 		})
-        stringify(listing)
 		res.status(200).send(listing)
 	} catch (error) {
 		res.status(401).send(error)
 	}
+}
+
+const createListing = async (req, res) => {
+    const { userId } = req.params
+    try {
+        const listingBody = {
+            userId,
+            ...req.body
+        }
+        const listing = await Listing.create(listingBody)
+        res.status(200).send(listing)
+    } catch (error) {
+        res.status(401).send(error)
+    }
 }
 
 const updateListing = async (req, res) => {
@@ -59,5 +69,6 @@ module.exports = {
     findListingByPk,
     updateListing,
     findAllListings,
-    deleteListing
+    deleteListing,
+    createListing
 }
