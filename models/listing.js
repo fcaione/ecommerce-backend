@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Listing.belongsTo(models.User, {
         foreignKey: "userId",
-        as: "listings"
+        as: "owner"
       })
       Listing.hasMany(models.Comment, {
         foreignKey: "listingId",
@@ -29,6 +29,10 @@ module.exports = (sequelize, DataTypes) => {
     price: {
       type: DataTypes.REAL,
       allowNull: false
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     soldOut: {
       type: DataTypes.BOOLEAN,
