@@ -1,4 +1,4 @@
-const { Listing, Comment } = require("../models")
+const { Listing, Comment, User } = require("../models")
 const stringify = require("../utils")
 
 const findAllListings = async (req, res) => {
@@ -14,7 +14,10 @@ const findListingByPk = async (req, res) => {
 	const { listingId } = req.params
 	try {
 		const listing = await Listing.findByPk(listingId, {
-			include: [{ model: Comment, as: "comments" }],
+			include: [
+                { model: Comment, as: "comments" },
+                { model: User, as: "owner"}
+            ],
 		})
 		res.status(200).send(listing)
 	} catch (error) {
