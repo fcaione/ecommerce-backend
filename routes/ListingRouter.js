@@ -3,7 +3,7 @@ const controller = require('../controllers/ListingController')
 const middleware = require('../middleware')
 
 Router.get('/', controller.findAllListings)
-Router.post("/:userId", 
+Router.post("/", 
 middleware.stripToken,
 middleware.verifyToken,
 controller.createListing)
