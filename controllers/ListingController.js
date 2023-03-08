@@ -15,7 +15,9 @@ const findListingByPk = async (req, res) => {
 	try {
 		const listing = await Listing.findByPk(listingId, {
 			include: [
-                { model: Comment, as: "comments" },
+                { model: Comment, as: "comments",
+                    include: [{ model: 
+                    User, as: "commentOwner"}]},
                 { model: User, as: "owner"}
             ],
 		})
