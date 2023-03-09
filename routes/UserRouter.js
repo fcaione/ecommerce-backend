@@ -12,5 +12,9 @@ Router.get('/session',
 middleware.stripToken,
 middleware.verifyToken,
 controllers.checkSession)
+Router.put('/update', 
+middleware.stripToken,
+middleware.verifyToken,
+controllers.updateUser)
 
 module.exports = Router;

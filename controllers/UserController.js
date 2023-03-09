@@ -56,10 +56,25 @@ const checkSession = async (req, res) => {
     res.send(payload)
 }
 
+const updateUser = async (req, res) => {
+    try {
+        const user = await User.update(req.body, {
+            where: {
+                id: req.body.userId
+            },
+            returning: true
+        })
+        res.status(200).send(user)
+    } catch (error) {
+		res.status(401).send(error)
+    }
+}
+
 
 module.exports = {
     findUserByPk,
     register,
     signIn,
-    checkSession
+    checkSession,
+    updateUser
 }
