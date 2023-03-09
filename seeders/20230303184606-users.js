@@ -12,6 +12,13 @@ module.exports = {
     createdAt: new Date(),
     updatedAt: new Date()
    }))
+   users.push({
+    name: 'Guest',
+    email: 'Guest@guest.com',
+    passwordDigest: '$2b$12$JzeSF7TBOgy3uOMKLQrcBeSt6QsAqt9sr0M59jRWGwi100y9us5ym',
+    createdAt: new Date(),
+    updatedAt: new Date()
+   })
    await queryInterface.bulkInsert('users', users)
   },
 

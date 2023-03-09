@@ -38,7 +38,9 @@ const signIn = async (req, res) => {
             let payload = {
               id: user.id,
               email: user.email,
-              name: user.name
+              name: user.name,
+              profileImage: user.profileImage,
+              backgroundImage: user.backgroundImage
             }
             let token = middleware.createToken(payload)
             return res.send({ user: payload, token })
