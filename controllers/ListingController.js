@@ -1,4 +1,4 @@
-const { Listing, Comment, User } = require("../models")
+const { Listing, Comment, User, Tag } = require("../models")
 const stringify = require("../utils")
 
 const findAllListings = async (req, res) => {
@@ -18,7 +18,8 @@ const findListingByPk = async (req, res) => {
                 { model: Comment, as: "comments",
                     include: [{ model: 
                     User, as: "commentOwner"}]},
-                { model: User, as: "owner"}
+                { model: User, as: "owner"},
+                { model: Tag, as: "tags"}
             ],
 		})
 		res.status(200).send(listing)
