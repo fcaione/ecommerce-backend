@@ -11,8 +11,6 @@ middleware.stripToken,
 middleware.verifyToken,
 controller.deleteTag)
 Router.get("/:tagName",
-middleware.stripToken,
-middleware.verifyToken,
 controller.getTag)
 
 module.exports = Router;
