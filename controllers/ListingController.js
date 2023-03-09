@@ -29,10 +29,8 @@ const findListingByPk = async (req, res) => {
 }
 
 const createListing = async (req, res) => {
-    const { userId } = req.params
     try {
         const listingBody = {
-            userId,
             ...req.body
         }
         const listing = await Listing.create(listingBody)

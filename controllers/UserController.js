@@ -36,9 +36,11 @@ const signIn = async (req, res) => {
         )
         if (matched) {
             let payload = {
-                id: user.id,
-                email: user.email,
-                name: user.name
+              id: user.id,
+              email: user.email,
+              name: user.name,
+              profileImage: user.profileImage,
+              backgroundImage: user.backgroundImage
             }
             let token = middleware.createToken(payload)
             return res.send({ user: payload, token })
