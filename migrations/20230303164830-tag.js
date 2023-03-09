@@ -2,41 +2,25 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable("listings", {
+		await queryInterface.createTable("tags", {
 			id: {
 				allowNull: false,
 				autoIncrement: true,
 				primaryKey: true,
 				type: Sequelize.INTEGER,
 			},
-			name: {
+			content: {
 				type: Sequelize.STRING,
 				allowNull: false,
 			},
-			price: {
-				type: Sequelize.REAL,
-				allowNull: false,
-			},
-			description: {
-				type: Sequelize.STRING,
-				allowNull: false,
-			},
-			image: {
-				type: Sequelize.TEXT,
-				allowNull: false
-			},
-			soldOut: {
-				type: Sequelize.BOOLEAN,
-				allowNull: false,
-				defaultValue: false,
-			},
-			userId: {
+			listingId: {
 				type: Sequelize.INTEGER,
 				allowNull: false,
 				references: {
-					model: "users",
+					model: "listings",
 					key: "id",
 				},
+				onDelete: "CASCADE"
 			},
 			createdAt: {
 				allowNull: false,
@@ -49,6 +33,6 @@ module.exports = {
 		})
 	},
 	async down(queryInterface, Sequelize) {
-		await queryInterface.dropTable("listings")
+		await queryInterface.dropTable("tags")
 	},
 }
